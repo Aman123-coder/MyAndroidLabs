@@ -5,6 +5,13 @@ plugins {
 android {
     compileSdk 32
 
+    buildFeatures{
+        viewBinding true;
+    }
+
+
+
+
     defaultConfig {
         applicationId "algonquin.cst2335.kuma0181"
         minSdk 22
