@@ -2,4 +2,6 @@
     <string name="app_name">Aman\'s Android Labs</string>
     <string name="hello_message">Hello world!</string>
     <string name="button_message">I\'m a button</string>
+    <string name="password" />
+    <string name="button_change" />
 </resources>
