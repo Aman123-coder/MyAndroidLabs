@@ -38,64 +38,6 @@ public class MainActivityTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTest() {
-        ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.editTextTextPassword),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText.perform(click());
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editTextTextPassword),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText2.perform(click());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.editTextTextPassword),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("12345"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editTextTextPassword), withText("12345"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText4.perform(pressImeActionButton());
-
-        ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                1),
-                        isDisplayed()));
-        materialButton.perform(click());
-
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.textView), withText("you shall not pass"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        textView.check(matches(withText("you shall not pass")));
-    }
-    @Test
     public void testFindMissingUpperCase() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editTextTextPassword),
@@ -153,6 +95,7 @@ public class MainActivityTest {
                         isDisplayed()));
         textView.check(matches(withText("you shall not pass")));
     }
+    @Test
     public void testFindMissinglowerCase() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editTextTextPassword),
@@ -210,6 +153,7 @@ public class MainActivityTest {
                         isDisplayed()));
         textView.check(matches(withText("you shall not pass")));
     }
+    @Test
     public void testFindMissingNumber() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editTextTextPassword),
@@ -239,10 +183,10 @@ public class MainActivityTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("PASSWORD"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("Password@"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editTextTextPassword), withText("PASSWORD"),
+                allOf(withId(R.id.editTextTextPassword), withText("Password@"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -267,6 +211,7 @@ public class MainActivityTest {
                         isDisplayed()));
         textView.check(matches(withText("you shall not pass")));
     }
+    @Test
     public void testFindMissingSpecialCharacter() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editTextTextPassword),
@@ -296,10 +241,10 @@ public class MainActivityTest {
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("PASSWORD12345"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText("Password12345"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editTextTextPassword), withText("PASSWORD12345"),
+                allOf(withId(R.id.editTextTextPassword), withText("Password12345"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
