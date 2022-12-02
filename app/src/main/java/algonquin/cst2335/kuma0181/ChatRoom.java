@@ -145,10 +145,19 @@ public class ChatRoom extends AppCompatActivity {
             }
         });
 
+        chatModel.selectedMessage.observe(this, (newMessageValue) -> {
 
+            MessageDetailsFragment chatFragment = new MessageDetailsFragment(newMessageValue);
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .addToBackStack("")
+                    .replace(R.id.fragmentLocation, chatFragment)
+                    .commit();
 
+        });
 
     }
+
     class MyRowHolder extends RecyclerView.ViewHolder {
         TextView messageText;
         TextView timeText;
@@ -157,23 +166,15 @@ public class ChatRoom extends AppCompatActivity {
             super(itemView);
 
             itemView.setOnClickListener(clk ->{
-                int position = getAbsoluteAdapterPosition();
+               /* int position = getAbsoluteAdapterPosition();
                 ChatMessage removedMessage = messages.get(position);
-
                 AlertDialog.Builder builder = new AlertDialog.Builder( ChatRoom.this );
-
                 builder.setMessage("Do you want to delete the message: " +messageText.getText())
                         .setTitle("Question: ")
-
                         .setNegativeButton("No", (dialog, cl) -> { })
-
                         .setPositiveButton("Yes", (dialog, cl) -> {
-
-
                             messages.remove(position);
                             myAdapter.notifyItemRemoved(position);
-
-
                             Snackbar.make(messageText, "You Deleted message #"+ position, Snackbar.LENGTH_LONG)
                                     .setAction("Undo", click -> {
                                         Executor thread = Executors.newSingleThreadExecutor();
@@ -188,12 +189,16 @@ public class ChatRoom extends AppCompatActivity {
                             Executor thread = Executors.newSingleThreadExecutor();
                             thread.execute(() ->
                             {
-                                mDAO.deleteMessage(removedMessage);
+                               mDAO.deleteMessage(removedMessage);
                             });
                         })
                         .create()
                         .show();
+*/
+                int position = getAbsoluteAdapterPosition();
+                ChatMessage selected = messages.get(position);
 
+                chatModel.selectedMessage.postValue(selected);
             });
 
             messageText = itemView.findViewById(R.id.messageText);
